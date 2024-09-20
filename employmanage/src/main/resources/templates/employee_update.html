@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增添员工</title>
+    <link rel="shortcut icon" th:href="@{/public/favicon.ico}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            height: 100%;
+        }
+        body {
+            height: 100%;
+        }
+        .container {
+            height: 100%;
+            background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
+        }
+        .login-wrapper {
+            background-color: #fff;
+            width: 358px;
+            height: 588px;
+            border-radius: 15px;
+            padding: 0 50px;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .header {
+            font-size: 38px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 100px;
+        }
+        .input-item {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 0;
+            padding: 10px;
+            border-bottom: 1px solid rgb(128, 125, 125);
+            font-size: 15px;
+            outline: none;
+        }
+        .input-item::placeholder {
+            text-transform: uppercase;
+        }
+        .login,.register {
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            margin-top: 40px;
+            background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+            color: #fff;
+        }
+        .msg {
+            text-align: center;
+            line-height: 88px;
+        }
+
+        a {
+            text-decoration-line: none;
+            color: #abc1ee;
+        }
+
+        @media (width:375px) {
+            html {
+                font-size: 37.5px;
+            }
+        }
+
+        /* 按钮当鼠标悬浮时的状态： */
+        .btn:hover{
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn {
+            transition: all .2s ;
+            border-radius: 10px;
+        }
+
+        .tankuang{
+            display: none;
+            position: relative;
+            background: #a6c1ee;
+            z-index: 99;
+            width: 250px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            border-radius: 5px;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="tankuang">
+    <div id="header">
+        <span style="color:#ffffff; font-size:20px;margin: auto;line-height: 50px;" id="layer_msg"></span>
+    </div>
+</div>
+
+<div class="container">
+    <div class="login-wrapper">
+        <div class="header">增添员工</div>
+        <div class="form-wrapper">
+            <form th:action="@{/employeeupdate}" id="form_login" method="post">
+                <input type="text" name="empId" placeholder="员工ID" class="input-item" >
+                <input type="text" name="empName" placeholder="员工姓名" class="input-item" >
+                <input type="text" name="age" placeholder="年龄" class="input-item" >
+                <input type="text" name="gender" placeholder="性别" class="input-item" >
+                <input type="text" name="email" placeholder="邮箱" class="input-item" >
+                <input type="submit" value="修改" class="login btn">
+            </form>
+        </div>
+        <div class="msg">
+            <a th:href="@{/indexpage}">返回首页</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

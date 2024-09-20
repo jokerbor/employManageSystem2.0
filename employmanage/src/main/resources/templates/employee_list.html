@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>员工列表</title>
+    <link rel="stylesheet" th:href="@{/static/css/index_work.css}">
+</head>
+<body>
+<table>
+    <tr>
+        <th colspan="6">员工列表</th>
+    </tr>
+    <tr>
+        <th>ID</th>
+        <th>员工姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>邮箱</th>
+        <th>是否删除</th>
+    </tr>
+    <tr th:each="employee,status : ${page.list}">
+        <td th:text="${employee.empId}"></td>
+        <td th:text="${employee.empName}"></td>
+        <td th:text="${employee.age}"></td>
+        <td th:text="${employee.gender}"></td>
+        <td th:text="${employee.email}"></td>
+        <td>
+            <a th:href="@{/employeedelete/{empId}(empId=${employee.empId})}">删除</a>
+        </td>
+    </tr>
+</table>
+
+<div style="text-align: center;">
+    <a th:if="${page.hasPreviousPage}" th:href="@{/employee/page/1}">首页</a>
+    <a th:if="${page.hasPreviousPage}" th:href="@{'/employee/page/'+${page.prePage}}">上一页</a>
+    <span th:each="num : ${page.navigatepageNums}">
+        <a th:if="${page.pageNum == num}" style="color: red;" th:href="@{'/employee/page/'+${num}}" th:text="'['+${num}+']'"></a>
+        <a th:if="${page.pageNum != num}" th:href="@{'/employee/page/'+${num}}" th:text="${num}"></a>
+    </span>
+    <a th:if="${page.hasNextPage}" th:href="@{'/employee/page/'+${page.nextPage}}">下一页</a>
+    <a th:if="${page.hasNextPage}" th:href="@{'/employee/page/'+${page.pages}}">末页</a>
+</div>
+<br>
+<div style="text-align: center;">
+    <a th:href="@{/indexpage}">返回首页</a>
+</div>
+
+<!--<script>-->
+<!--    alert('登录成功')-->
+<!--</script>-->
+</body>
+</html>
